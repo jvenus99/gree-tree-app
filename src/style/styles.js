@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const HeaderContainer = styled.div`
-  height: 25vh;
+  height: 30vh;
   background-color: #c3ce0e;
   border-radius: 0px 0px 60px 60px;
   width: 100%;
@@ -15,8 +15,8 @@ export const Container = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  height: 50vh;
+  min-height: 70vh;
+  max-height: auto;
   background-color: #e6eee7;
   border-radius: 60px 60px 0px 0px;
 `;

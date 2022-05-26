@@ -37,7 +37,7 @@ export const Input = styled(TextField)`
 export const ButtonConfirm = styled(Button)`
   width: 50%;
   @media (min-width: 768px) {
-    width: 30%;
+    width: 20%;
   }
   background: #117821 !important;
   padding: 10px !important;

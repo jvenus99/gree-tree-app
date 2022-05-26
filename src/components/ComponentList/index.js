@@ -5,12 +5,12 @@ export const ComponentList = ({ icon, name, children, onClick }) => {
   return (
     <>
       <ComponentListContainer onClick={onClick}>
-        <span>{icon}</span>
+        {icon && <span>{icon}</span>}
         <ContentList>
-          <h2>{name}</h2>
-          <span>{`${children}`}</span>
+          {name && <h2>{name}</h2>}
+          {children && <span>{`${children}`}</span>}
         </ContentList>
-        <MdOutlineArrowForwardIos size={25} />
+        {onClick !== undefined && <MdOutlineArrowForwardIos size={25} />}
       </ComponentListContainer>
     </>
   );

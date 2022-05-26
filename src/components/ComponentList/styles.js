@@ -12,7 +12,6 @@ export const ComponentListContainer = styled.div`
   }
   background-color: transparent;
   flex: row;
-  justify-content: space-between;
   align-items: center;
   & > span {
     background-color: #c3ce0e;
@@ -45,5 +44,6 @@ export const ContentList = styled.div`
   span {
     color: #c3ce0e !important;
     font-size: 14px;
+    margin: 0 10px;
   }
 `;

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const HomeContainer = styled.div`
   width: 100%;
   display: flex;
+  height: 100vh;
   flex-direction: column;
   align-items: center;
   @media (min-width: 768px) {
@@ -11,7 +12,7 @@ export const HomeContainer = styled.div`
 
 export const HomeDesktop = styled.div`
   @media (min-width: 768px) {
-    width: 50%;
+    width: 80%;
     display: flex;
     flex-direction: row;
   }
@@ -24,6 +25,7 @@ export const ListEvents = styled.div`
   flex-direction: column;
   @media (min-width: 768px) {
     height: 40vh;
+    max-height: auto;
   }
   width: 100%;
   h1 {
@@ -40,6 +42,7 @@ export const ListNewLetter = styled.div`
   flex-direction: column;
   @media (min-width: 768px) {
     height: 40vh;
+    max-height: auto;
   }
   width: 100%;
   h1 {
