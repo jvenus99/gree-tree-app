@@ -4,15 +4,19 @@ import {
   Routes,
   // Navigate,
 } from 'react-router-dom';
+import { Header } from '../components/Header';
 import { Home } from '../pages/Home';
 import { Login } from '../pages/Login';
+import { Cadastro } from '../pages/SignUp';
 
 export const AppRoutes = () => {
   return (
     <Router>
+      <Header />
       <Routes>
-        <Route exact path='/' element={<Home />} />
-        <Route exact path='/login' element={<Login />} />
+        <Route path='*' element={<Home />} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/cadastro' element={<Cadastro />} />
       </Routes>
     </Router>
   );

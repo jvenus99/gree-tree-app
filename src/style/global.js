@@ -12,7 +12,7 @@ export default createGlobalStyle`
      font-size: 100%;
     font: inherit;
     vertical-align: baseline;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Montserrat', sans-serif !important;
   }
   h1 {
     font-weight: bold;
