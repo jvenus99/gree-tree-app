@@ -22,7 +22,7 @@ export const Profile = () => {
         <ContainerProfile>
           <ComponentList
             icon={<GiPlantRoots size={25} />}
-            name={'32 Mudas doadas'}
+            name={'30 Mudas doadas'}
           />
           <ComponentList
             icon={<BsCalendar2EventFill size={30} />}
