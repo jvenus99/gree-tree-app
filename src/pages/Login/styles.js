@@ -6,7 +6,10 @@ export const LoginContainer = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  padding-top: 10%;
+  padding-top: 20%;
+  @media (min-width: 768px) {
+    padding-top: 10%;
+  }
   justify-content: space-around;
   align-items: center;
   h1 {
