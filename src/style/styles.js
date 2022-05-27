@@ -43,3 +43,15 @@ export const PageAuth = styled.div`
   width: 100%;
   align-items: center;
 `;
+
+export const MenuButton = styled.span`
+  display: flex;
+  align-items: center;
+  float: right;
+  &:hover {
+    cursor: pointer;
+    background-color: rgba(17, 120, 33, 0.1);
+    padding: 10px;
+    border-radius: 50%;
+  }
+`;

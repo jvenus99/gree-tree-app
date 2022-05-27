@@ -1,5 +1,6 @@
 import { Container, HeaderChildren, HeaderContainer } from '../../style/styles';
 import { ComponentList } from '../../components/ComponentList';
+import { SearchBar } from '../../components/Search';
 
 export const PontosDoacao = () => {
   return (
@@ -10,7 +11,9 @@ export const PontosDoacao = () => {
           <span>54</span>
         </HeaderChildren>
       </HeaderContainer>
-      <Container></Container>
+      <Container>
+        <SearchBar />
+      </Container>
     </>
   );
 };

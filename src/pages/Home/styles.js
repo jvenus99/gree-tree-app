@@ -34,23 +34,27 @@ export const ListEvents = styled.div`
   h1 {
     margin-left: 20px;
     margin-top: 20px;
+    margin-bottom: 10px;
     float: left;
   }
 `;
 
 export const ListNewLetter = styled.div`
+  margin-top: 15%;
   margin-bottom: 10px;
   height: 26vh;
   display: flex;
   flex-direction: column;
   @media (min-width: 768px) {
+    margin: 0 !important;
     height: 40vh;
     max-height: auto;
   }
   width: 100%;
   h1 {
     margin-left: 20px;
-    margin-top: 20px;
+    margin-top: 30px;
+    margin-bottom: 10px;
     float: left;
   }
 `;
