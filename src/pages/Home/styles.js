@@ -3,10 +3,12 @@ import styled from 'styled-components';
 export const HomeContainer = styled.div`
   width: 100%;
   display: flex;
-  height: 100vh;
+  min-height: 100vh;
+  max-height: auto;
   flex-direction: column;
   align-items: center;
   @media (min-width: 768px) {
+    min-height: 50vh;
   }
 `;
 
@@ -20,9 +22,10 @@ export const HomeDesktop = styled.div`
 
 export const ListEvents = styled.div`
   margin-bottom: 10px;
-  height: 25vh;
+  height: 26vh;
   display: flex;
   flex-direction: column;
+  margin: 10px 0;
   @media (min-width: 768px) {
     height: 40vh;
     max-height: auto;
@@ -31,23 +34,27 @@ export const ListEvents = styled.div`
   h1 {
     margin-left: 20px;
     margin-top: 20px;
+    margin-bottom: 10px;
     float: left;
   }
 `;
 
 export const ListNewLetter = styled.div`
+  margin-top: 15%;
   margin-bottom: 10px;
-  height: 25vh;
+  height: 26vh;
   display: flex;
   flex-direction: column;
   @media (min-width: 768px) {
+    margin: 0 !important;
     height: 40vh;
     max-height: auto;
   }
   width: 100%;
   h1 {
     margin-left: 20px;
-    margin-top: 20px;
+    margin-top: 30px;
+    margin-bottom: 10px;
     float: left;
   }
 `;

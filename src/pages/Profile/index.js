@@ -12,7 +12,7 @@ export const Profile = () => {
         <HeaderProfile>
           <h1>Perfil</h1>
           <div>
-            <FaUser size={70} />
+            <FaUser size={40} />
           </div>
           <span>Ana Calixto</span>
           <span>Cadastrada há 3 meses</span>

@@ -5,10 +5,14 @@ export const ComponentListContainer = styled.div`
   height: 5vh;
   display: flex;
   margin-top: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   @media (min-width: 768px) {
     padding: 40px;
     border-radius: 20px;
+    &:hover {
+      cursor: pointer;
+      background-color: rgba(17, 120, 33, 0.1);
+    }
   }
   background-color: transparent;
   flex: row;
@@ -26,10 +30,6 @@ export const ComponentListContainer = styled.div`
   }
   & > svg {
     margin-right: 5px;
-  }
-  &:hover {
-    cursor: pointer;
-    background-color: rgba(17, 120, 33, 0.1);
   }
 `;
 
