@@ -9,6 +9,7 @@ import { Home } from '../pages/Home';
 import { Login } from '../pages/Login';
 import { Profile } from '../pages/Profile';
 import { Cadastro } from '../pages/SignUp';
+import { Mudas } from '../pages/Mudas';
 
 export const AppRoutes = () => {
   return (
@@ -19,6 +20,7 @@ export const AppRoutes = () => {
         <Route path='/login' element={<Login />} />
         <Route path='/cadastro' element={<Cadastro />} />
         <Route path='/profile' element={<Profile />} />
+        <Route path='/mudas' element={<Mudas />} />
       </Routes>
     </Router>
   );
