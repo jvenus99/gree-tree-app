@@ -5,9 +5,24 @@ export const HeaderContainer = styled.div`
   background-color: #c3ce0e;
   border-radius: 0px 0px 60px 60px;
   width: 100%;
+  h1 {
+    font-weight: 400;
+  }
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+`;
+
+export const HeaderChildren = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  span {
+    font-size: 32px;
+    margin: 20px;
+    color: white;
+    font-weight: 700;
+  }
 `;
 
 export const Container = styled.div`
