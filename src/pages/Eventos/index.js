@@ -1,27 +1,24 @@
 import { Container, HeaderContainer } from '../../style/styles';
-import { ContainerMudas, HeaderMudas } from './styles';
+import { ContainerEventos, HeaderEventos } from './styles';
 import { ComponentList } from '../../components/ComponentList';
-import { SearchBar } from '../../components/Search';
 import { GiPlantRoots } from 'react-icons/gi';
 
 
-export const Mudas = () =>{
+export const Eventos = () =>{
     return (
     <>
     <HeaderContainer>
-        <HeaderMudas>
-            <h1>Mudas solicitadas</h1>
-            <h1 style={{fontWeight:'bold', color:'white', fontSize:28}}>20</h1>
+        <HeaderEventos>
+            <h1>Eventos Interact</h1>
+            <h1 style={{fontWeight:'bold', color:'white', fontSize:28}}>5</h1>
 
-        </HeaderMudas>
+        </HeaderEventos>
     </HeaderContainer>
     <Container>
-        <ContainerMudas>
-        <SearchBar >            
-        </SearchBar>
+        <ContainerEventos>
         <ComponentList
             icon={<GiPlantRoots size={25} />}
-            name={'Nome da muda'}
+            name={'Nome do evento'}
             children={new Date()}
             onClick={() => {
                 console.log('Clicou');
@@ -29,13 +26,13 @@ export const Mudas = () =>{
         />
         <ComponentList
             icon={<GiPlantRoots size={25} />}
-            name={'Nome da muda'}
+            name={'Nome do evento'}
             children={new Date()}
             onClick={() => {
                 console.log('Clicou');
             }}            
         />
-        </ContainerMudas>
+        </ContainerEventos>
     </Container>
     </>
     ) 
