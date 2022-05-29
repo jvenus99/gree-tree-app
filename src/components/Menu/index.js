@@ -43,6 +43,12 @@ export const Menu = ({ setOpen, open }) => {
         >
           <Link to='/myEvents'>Meus Eventos</Link>
         </MenuItemStyle>
+        <MenuItemStyle
+          selected={location.pathname === '/Sustentabilidade'}
+          onClick={() => setOpen(false)}
+        >
+          <Link to='/Sustentabilidade'>Sustentabilidade</Link>
+        </MenuItemStyle>
       </MenuContent>
     </MenuContainer>
   );
