@@ -2,7 +2,7 @@ import { HeaderContent } from './styles';
 import { AiOutlineArrowLeft } from 'react-icons/ai';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { BiUserCircle } from 'react-icons/bi';
-import { useLocation } from 'react-router-dom';
+import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { MenuButton } from '../../style/styles';
 import { Menu } from '../Menu';
 import { useState } from 'react';
@@ -10,6 +10,7 @@ import { useState } from 'react';
 export const Header = () => {
   const location = useLocation();
   const [openMenu, setOpenMenu] = useState(false);
+  const navigate = useNavigate();
   return (
     <>
       {!(
@@ -18,9 +19,19 @@ export const Header = () => {
         <>
           <HeaderContent>
             {location.pathname !== '/' && location.pathname !== '/home' ? (
-              <AiOutlineArrowLeft size={25} style={{ color: 'white' }} />
+              <AiOutlineArrowLeft
+                onClick={() => navigate(-1)}
+                size={25}
+                style={{ color: 'white', cursor: 'pointer' }}
+              />
             ) : (
-              <BiUserCircle size={40} style={{ color: 'white' }} />
+              <BiUserCircle
+                onClick={() => {
+                  navigate('/profile');
+                }}
+                size={40}
+                style={{ color: 'white', cursor: 'pointer' }}
+              />
             )}
             <MenuButton>
               <GiHamburgerMenu
