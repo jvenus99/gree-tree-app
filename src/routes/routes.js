@@ -13,6 +13,7 @@ import { Profile } from '../pages/Profile';
 import { Cadastro } from '../pages/SignUp';
 import { Mudas } from '../pages/Mudas';
 import { Eventos } from '../pages/Eventos';
+import{ Usuarios } from '../pages/Usuarios';
 
 export const AppRoutes = () => {
   return (
@@ -27,6 +28,7 @@ export const AppRoutes = () => {
         <Route path='/myEvents' element={<MeusEventos />} />
         <Route path='/mudas' element= {<Mudas/>} />
         <Route path='/eventos' element= {<Eventos/>} />
+        <Route path='/usuarios' element= {<Usuarios/>} />
       </Routes>
     </Router>
   );
