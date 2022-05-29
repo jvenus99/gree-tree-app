@@ -1,7 +1,7 @@
 import { Container, HeaderContainer } from '../../style/styles';
 import { ContainerEventos, HeaderEventos } from './styles';
 import { ComponentList } from '../../components/ComponentList';
-import { GiPlantRoots } from 'react-icons/gi';
+import { BsCalendar4Event } from 'react-icons/bs';
 
 
 export const Eventos = () =>{
@@ -17,7 +17,7 @@ export const Eventos = () =>{
     <Container>
         <ContainerEventos>
         <ComponentList
-            icon={<GiPlantRoots size={25} />}
+            icon={<BsCalendar4Event size={25} />}
             name={'Nome do evento'}
             children={new Date()}
             onClick={() => {
@@ -25,7 +25,7 @@ export const Eventos = () =>{
             }}                       
         />
         <ComponentList
-            icon={<GiPlantRoots size={25} />}
+            icon={<BsCalendar4Event size={25} />}
             name={'Nome do evento'}
             children={new Date()}
             onClick={() => {
