@@ -11,6 +11,8 @@ import { MeusEventos } from '../pages/MeusEventos';
 import { PontosDoacao } from '../pages/PontosDoacao';
 import { Profile } from '../pages/Profile';
 import { Cadastro } from '../pages/SignUp';
+import { Mudas } from '../pages/Mudas';
+import { Eventos } from '../pages/Eventos';
 
 export const AppRoutes = () => {
   return (
@@ -23,6 +25,8 @@ export const AppRoutes = () => {
         <Route path='/profile' element={<Profile />} />
         <Route path='/pontosDoacao' element={<PontosDoacao />} />
         <Route path='/myEvents' element={<MeusEventos />} />
+        <Route path='/mudas' element= {<Mudas/>} />
+        <Route path='/eventos' element= {<Eventos/>} />
       </Routes>
     </Router>
   );
