@@ -27,7 +27,8 @@ export const HeaderSustentabilidade = styled.div`
 export const ContainerSustentabilidade = styled.div`
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 100%;  
+  margin-top: 20px;
 
   @media (min-width: 768px) {
     width: 40%;

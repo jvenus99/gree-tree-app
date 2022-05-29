@@ -1,7 +1,7 @@
 import { Container, HeaderContainer } from '../../style/styles';
 import { ContainerEventos, HeaderEventos } from './styles';
 import { ComponentList } from '../../components/ComponentList';
-import { BsCalendar4Event } from 'react-icons/bs';
+import { BsCalendar2EventFill } from 'react-icons/bs';
 
 
 export const Eventos = () =>{
@@ -17,7 +17,7 @@ export const Eventos = () =>{
     <Container>
         <ContainerEventos>
         <ComponentList
-            icon={<BsCalendar4Event size={25} />}
+            icon={<BsCalendar2EventFill size={25} />}
             name={'Nome do evento'}
             children={new Date()}
             onClick={() => {
@@ -25,7 +25,7 @@ export const Eventos = () =>{
             }}                       
         />
         <ComponentList
-            icon={<BsCalendar4Event size={25} />}
+            icon={<BsCalendar2EventFill size={25} />}
             name={'Nome do evento'}
             children={new Date()}
             onClick={() => {
