@@ -1,38 +1,36 @@
 import { Container, HeaderContainer } from '../../style/styles';
-import { ContainerEventos, HeaderEventos } from './styles';
+import { ContainerSustentabilidade, HeaderSustentabilidade } from './styles';
 import { ComponentList } from '../../components/ComponentList';
-import { BsCalendar4Event } from 'react-icons/bs';
+import { BiNews } from 'react-icons/bi';
 
 
-export const Eventos = () =>{
+export const Sustentabilidade = () =>{
     return (
     <>
     <HeaderContainer>
-        <HeaderEventos>
-            <h1>Eventos Interact</h1>
-            <h1 style={{fontWeight:'bold', color:'white', fontSize:28}}>5</h1>
-
-        </HeaderEventos>
+        <HeaderSustentabilidade>
+            <h1>Sustentabilidade</h1>
+        </HeaderSustentabilidade>
     </HeaderContainer>
     <Container>
-        <ContainerEventos>
+        <ContainerSustentabilidade> 
         <ComponentList
-            icon={<BsCalendar4Event size={25} />}
-            name={'Nome do evento'}
+            icon={<BiNews size={25} />}
+            name={'Noticia'}
             children={new Date()}
             onClick={() => {
                 console.log('Clicou');
             }}                       
         />
         <ComponentList
-            icon={<BsCalendar4Event size={25} />}
-            name={'Nome do evento'}
+            icon={<BiNews size={25} />}
+            name={'Notícia'}
             children={new Date()}
             onClick={() => {
                 console.log('Clicou');
             }}            
         />
-        </ContainerEventos>
+        </ContainerSustentabilidade>
     </Container>
     </>
     ) 
