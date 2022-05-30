@@ -22,7 +22,7 @@ export const HomeDesktop = styled.div`
 
 export const ListEvents = styled.div`
   margin-bottom: 10px;
-  height: 26vh;
+  min-height: 26vh;
   display: flex;
   flex-direction: column;
   margin: 10px 0;
@@ -40,14 +40,13 @@ export const ListEvents = styled.div`
 `;
 
 export const ListNewLetter = styled.div`
-  margin-top: 15%;
   margin-bottom: 10px;
   height: 26vh;
   display: flex;
   flex-direction: column;
   @media (min-width: 768px) {
     margin: 0 !important;
-    height: 40vh;
+    min-height: 40vh;
     max-height: auto;
   }
   width: 100%;

@@ -2,7 +2,7 @@ import { HeaderContent } from './styles';
 import { AiOutlineArrowLeft } from 'react-icons/ai';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { BiUserCircle } from 'react-icons/bi';
-import { Navigate, useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { MenuButton } from '../../style/styles';
 import { Menu } from '../Menu';
 import { useState } from 'react';
@@ -33,12 +33,8 @@ export const Header = () => {
                 style={{ color: 'white', cursor: 'pointer' }}
               />
             )}
-            <MenuButton>
-              <GiHamburgerMenu
-                onClick={() => setOpenMenu(true)}
-                size={40}
-                style={{ color: 'white' }}
-              />
+            <MenuButton onClick={() => setOpenMenu(true)}>
+              <GiHamburgerMenu size={40} style={{ color: 'white' }} />
             </MenuButton>
           </HeaderContent>
           {openMenu && <Menu setOpen={setOpenMenu} open={openMenu} />}

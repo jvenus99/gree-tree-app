@@ -34,7 +34,7 @@ export const ContainerUsuarios = styled.div`
     width: 40%;
     align-self: center;
     background-color: rgba(17, 120, 33, 0.1);
-    height: 70vh;
+    min-height: 70vh;
     border-radius: 30px;
     max-height: 100%;
   }

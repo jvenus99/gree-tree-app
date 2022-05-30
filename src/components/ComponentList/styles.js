@@ -40,6 +40,13 @@ export const ContentList = styled.div`
   h2 {
     font-size: 18px;
     margin-bottom: 5px;
+    max-width: 22ch;
+    @media (min-width: 768px) {
+      max-width: 31ch;
+    }
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
   span {
     color: #c3ce0e !important;

@@ -1,39 +1,47 @@
 import { Container, HeaderContainer } from '../../style/styles';
-import { ContainerEventos, HeaderEventos } from './styles';
+import { ButtonAdd, ContainerEventos, HeaderEventos } from './styles';
 import { ComponentList } from '../../components/ComponentList';
 import { BsCalendar2EventFill } from 'react-icons/bs';
+import { IoIosAdd } from 'react-icons/io';
+import { useState } from 'react';
+import { ModalCreate } from './modalCreate';
 
-
-export const Eventos = () =>{
-    return (
+export const Eventos = () => {
+  const [showModal, setShowModal] = useState(false);
+  return (
     <>
-    <HeaderContainer>
+      <ModalCreate open={showModal} setOpen={setShowModal} />
+      <HeaderContainer>
         <HeaderEventos>
-            <h1>Eventos Interact</h1>
-            <h1 style={{fontWeight:'bold', color:'white', fontSize:28}}>5</h1>
-
+          <ButtonAdd onClick={() => setShowModal(true)}>
+            <IoIosAdd size={40} />
+          </ButtonAdd>
+          <h1>Eventos Interact</h1>
+          <h1 style={{ fontWeight: 'bold', color: 'white', fontSize: 28 }}>
+            5
+          </h1>
         </HeaderEventos>
-    </HeaderContainer>
-    <Container>
+      </HeaderContainer>
+      <Container>
         <ContainerEventos>
-        <ComponentList
+          <ComponentList
             icon={<BsCalendar2EventFill size={25} />}
             name={'Nome do evento'}
             children={new Date()}
             onClick={() => {
-                console.log('Clicou');
-            }}                       
-        />
-        <ComponentList
+              console.log('Clicou');
+            }}
+          />
+          <ComponentList
             icon={<BsCalendar2EventFill size={25} />}
             name={'Nome do evento'}
             children={new Date()}
             onClick={() => {
-                console.log('Clicou');
-            }}            
-        />
+              console.log('Clicou');
+            }}
+          />
         </ContainerEventos>
-    </Container>
+      </Container>
     </>
-    ) 
-}
+  );
+};

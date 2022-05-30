@@ -9,8 +9,28 @@ import {
 } from './styles';
 import { BsCalendar2EventFill } from 'react-icons/bs';
 import { BiNews } from 'react-icons/bi';
+import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import moment from 'moment';
+import 'moment/locale/pt-br';
+moment.locale('pt-br');
 
 export const Home = () => {
+  const [news, setNews] = useState([]);
+
+  async function fetchNews() {
+    const { data } = await axios.get(
+      'https://newsapi.org/v2/top-headlines?country=br&category=science&apiKey=f675699f1756481d8ef67909b805c7c7'
+    );
+    setNews(data.articles);
+  }
+
+  useEffect(() => {
+    //fetchEvents();
+    fetchNews();
+  }, []);
+  const navigate = useNavigate();
   return (
     <>
       <HeaderContainer>
@@ -25,7 +45,7 @@ export const Home = () => {
               children={new Date()}
               icon={<BsCalendar2EventFill size={30} />}
               onClick={() => {
-                console.log('Clicou');
+                navigate('/myEvents');
               }}
             />
             <ComponentList
@@ -33,46 +53,29 @@ export const Home = () => {
               children={new Date()}
               icon={<BsCalendar2EventFill size={30} />}
               onClick={() => {
-                console.log('Clicou');
+                navigate('/myEvents');
               }}
             />
-            <SpanClick>Ver Mais</SpanClick>
+            <SpanClick onClick={() => navigate('/myEvents')}>
+              Ver Mais
+            </SpanClick>
           </ListEvents>
           <ListNewLetter>
             <h1>Sobre Sustentabilidade</h1>
-            <ComponentList
-              name={'Notícia'}
-              children={new Date()}
-              icon={<BiNews size={30} />}
-              onClick={() => {
-                console.log('Clicou');
-              }}
-            />
-            <ComponentList
-              name={'Notícia'}
-              children={new Date()}
-              icon={<BiNews size={30} />}
-              onClick={() => {
-                console.log('Clicou');
-              }}
-            />
-            <ComponentList
-              name={'Notícia'}
-              children={new Date()}
-              icon={<BiNews size={30} />}
-              onClick={() => {
-                console.log('Clicou');
-              }}
-            />
-            <ComponentList
-              name={'Notícia'}
-              children={new Date()}
-              icon={<BiNews size={30} />}
-              onClick={() => {
-                console.log('Clicou');
-              }}
-            />
-            <SpanClick>Ver Mais</SpanClick>
+            {news.slice(0, 4).map((item) => (
+              <ComponentList
+                name={item.title}
+                children={moment(item.publishedAt).format('D MMM. YYYY')}
+                icon={<BiNews size={30} />}
+                onClick={() => {
+                  navigate('/sustentabilidade');
+                }}
+              />
+            ))}
+
+            <SpanClick onClick={() => navigate('/sustentabilidade')}>
+              Ver Mais
+            </SpanClick>
           </ListNewLetter>
         </HomeDesktop>
       </HomeContainer>
