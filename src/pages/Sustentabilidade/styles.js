@@ -32,7 +32,7 @@ export const ContainerSustentabilidade = styled.div`
   margin-top: 20px;
 
   @media (min-width: 768px) {
-    width: 40%;
+    width: 50%;
     align-self: center;
     background-color: rgba(17, 120, 33, 0.1);
     min-height: 70vh;

@@ -42,7 +42,7 @@ export const ContentList = styled.div`
     margin-bottom: 5px;
     max-width: 22ch;
     @media (min-width: 768px) {
-      max-width: 31ch;
+      max-width: 40ch;
     }
     overflow: hidden;
     text-overflow: ellipsis;

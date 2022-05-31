@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { MenuItem } from '@mui/material';
 
 export const MenuContainer = styled.div`
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
   background-color: #fff;

@@ -11,16 +11,18 @@ import { GiPlantRoots } from 'react-icons/gi';
 import { IoIosAdd } from 'react-icons/io';
 import { useState } from 'react';
 import { ModalCreate } from './modalCreate';
+import { ModalDoar } from './modalDoar';
 
 export const Mudas = () => {
-  const [showModal, setShowModal] = useState(false);
+  const [showModalCreate, setShowModalCreate] = useState(false);
+  const [showModalDoar, setShowModalDoar] = useState(false);
   return (
     <>
       <HeaderContainer>
         <HeaderMudas>
           <ContainerAdmin>
             <h1>Mudas solicitadas</h1>
-            <ButtonAdd onClick={() => setShowModal(true)}>
+            <ButtonAdd onClick={() => setShowModalCreate(true)}>
               <IoIosAdd size={40} />
             </ButtonAdd>
           </ContainerAdmin>
@@ -37,7 +39,7 @@ export const Mudas = () => {
             name={'Nome da muda'}
             children={new Date()}
             onClick={() => {
-              console.log('Clicou');
+              setShowModalDoar(true);
             }}
           />
 
@@ -46,10 +48,11 @@ export const Mudas = () => {
             name={'Nome da muda'}
             children={new Date()}
             onClick={() => {
-              console.log('Clicou');
+              setShowModalDoar(true);
             }}
           />
-          <ModalCreate open={showModal} setOpen={setShowModal} />
+          <ModalCreate open={showModalCreate} setOpen={setShowModalCreate} />
+          <ModalDoar open={showModalDoar} setOpen={setShowModalDoar} />
         </ContainerMudas>
       </Container>
     </>

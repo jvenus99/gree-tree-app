@@ -1,3 +1,4 @@
+import { Button } from '@mui/material';
 import styled from 'styled-components';
 
 export const HeaderUsuarios = styled.div`
@@ -38,4 +39,40 @@ export const ContainerUsuarios = styled.div`
     border-radius: 30px;
     max-height: 100%;
   }
+`;
+
+export const ContentModal = styled.div`
+  border-radius: 8px;
+  min-height: 30vh;
+  max-height: auto;
+  width: 100%;
+  margin-top: 38px;
+  color: black !important;
+  h1 {
+    font-size: 32px;
+    text-align: left;
+    margin-bottom: 10%;
+  }
+`;
+
+export const ButtonCloseModal = styled(Button)`
+  position: absolute !important;
+  top: 2px;
+  right: 0px;
+  padding: 20px;
+`;
+
+export const ButtonConfirm = styled(Button)`
+  width: 100%;
+  background: ${({ unconfirm }) =>
+    unconfirm ? 'red !important' : '#117821 !important'};
+  padding: 10px !important;
+  @media (min-width: 768px) {
+    width: 40%;
+    margin: 25px !important;
+  }
+  margin-bottom: 25px !important;
+  border-radius: 13px !important;
+  text-transform: none !important;
+  font-size: 18px !important;
 `;

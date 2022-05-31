@@ -16,12 +16,11 @@ export const HeaderContainer = styled.div`
 export const HeaderChildren = styled.div`
   display: flex;
   flex-direction: column;
+  width: 100%;
   align-items: center;
-  span {
-    font-size: 32px;
-    margin: 20px;
-    color: white;
-    font-weight: 700;
+  h1 {
+    font-size: 22px;
+    margin-bottom: 20px;
   }
 `;
 

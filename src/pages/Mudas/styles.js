@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { Button } from '@mui/material';
 import TextField from '@mui/material/TextField';
+import Select from '@mui/material/Select';
 
 export const HeaderMudas = styled.div`
   display: flex;
@@ -46,16 +47,25 @@ export const ContainerAdmin = styled.div`
 
 export const ContentModal = styled.div`
   border-radius: 8px;
-  min-height: 35vh;
+  min-height: 45vh;
+  max-height: auto;
   width: 100%;
   margin-top: 38px;
   color: black !important;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
   h1 {
     font-size: 32px;
     text-align: left;
+    margin-bottom: 20px;
+  }
+  span {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+  label {
+    margin-bottom: 5px;
+    margin-top: 10px;
   }
 `;
 
@@ -77,6 +87,14 @@ export const Input = styled(TextField)`
   }
 `;
 
+export const SelectStyle = styled(Select)`
+  width: 100%;
+  border-radius: 13px !important;
+  select {
+    color: #117821 !important;
+  }
+`;
+
 export const ButtonConfirm = styled(Button)`
   width: 100%;
   background: #117821 !important;
@@ -84,4 +102,5 @@ export const ButtonConfirm = styled(Button)`
   border-radius: 13px !important;
   text-transform: none !important;
   font-size: 18px !important;
+  margin-top: 30px !important;
 `;

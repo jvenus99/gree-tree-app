@@ -20,6 +20,14 @@ export const ModalCreate = ({ open, setOpen }) => {
               label={'Nome da Planta'}
               placeholder='Digite o nome da planta'
             />
+            <Input
+              label={'Código da Planta'}
+              placeholder='Digite o código da planta'
+            />
+            <Input
+              label={'Porcentagem de Absorção'}
+              placeholder='Digite a porcentagem de absorção'
+            />
             <ButtonConfirm variant='contained'>Cadastrar</ButtonConfirm>
           </ContentModal>
         </DialogContent>

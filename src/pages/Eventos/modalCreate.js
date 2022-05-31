@@ -1,12 +1,6 @@
 import { Dialog, DialogContent } from '@mui/material';
 import { ButtonCloseModal, ButtonConfirm, ContentModal, Input } from './styles';
 import { IoMdClose } from 'react-icons/io';
-import CreatableSelect from 'react-select/creatable';
-const options = [
-  { value: 'chocolate', label: 'Chocolate' },
-  { value: 'strawberry', label: 'Strawberry' },
-  { value: 'vanilla', label: 'Vanilla' },
-];
 
 export const ModalCreate = ({ open, setOpen }) => {
   return (
@@ -29,12 +23,6 @@ export const ModalCreate = ({ open, setOpen }) => {
             <Input label={'Local'} placeholder='Digite o enedereço do evento' />
             <Input type='date' placeholder='Data do evento' />
             <Input type='time' placeholder='Digite o nome do evento' />
-            <CreatableSelect
-              isClearable
-              isMulti
-              name='mudas'
-              options={options}
-            />
             <ButtonConfirm variant='contained'>Cadastrar</ButtonConfirm>
           </ContentModal>
         </DialogContent>
