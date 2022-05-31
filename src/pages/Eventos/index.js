@@ -1,5 +1,10 @@
 import { Container, HeaderContainer } from '../../style/styles';
-import { ButtonAdd, ContainerEventos, HeaderEventos } from './styles';
+import {
+  ButtonAdd,
+  ContainerAdmin,
+  ContainerEventos,
+  HeaderEventos,
+} from './styles';
 import { ComponentList } from '../../components/ComponentList';
 import { BsCalendar2EventFill } from 'react-icons/bs';
 import { IoIosAdd } from 'react-icons/io';
@@ -13,10 +18,12 @@ export const Eventos = () => {
       <ModalCreate open={showModal} setOpen={setShowModal} />
       <HeaderContainer>
         <HeaderEventos>
-          <ButtonAdd onClick={() => setShowModal(true)}>
-            <IoIosAdd size={40} />
-          </ButtonAdd>
-          <h1>Eventos Interact</h1>
+          <ContainerAdmin>
+            <h1>Eventos Interact</h1>
+            <ButtonAdd onClick={() => setShowModal(true)}>
+              <IoIosAdd size={40} />
+            </ButtonAdd>
+          </ContainerAdmin>
           <h1 style={{ fontWeight: 'bold', color: 'white', fontSize: 28 }}>
             5
           </h1>

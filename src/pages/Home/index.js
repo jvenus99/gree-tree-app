@@ -42,7 +42,7 @@ export const Home = () => {
             <h1>Meus Eventos</h1>
             <ComponentList
               name={'Evento'}
-              children={new Date()}
+              children={moment(new Date()).format('D MMM. YYYY')}
               icon={<BsCalendar2EventFill size={30} />}
               onClick={() => {
                 navigate('/myEvents');
@@ -50,7 +50,7 @@ export const Home = () => {
             />
             <ComponentList
               name={'Evento'}
-              children={new Date()}
+              children={moment(new Date()).format('D MMM. YYYY')}
               icon={<BsCalendar2EventFill size={30} />}
               onClick={() => {
                 navigate('/myEvents');

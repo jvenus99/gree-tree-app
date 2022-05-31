@@ -11,29 +11,6 @@ export const HeaderMudas = styled.div`
     font-size: 22px;
     margin-bottom: 20px;
   }
-  span:nth-child(3) {
-    margin: 5px;
-    font-weight: 600;
-    font-size: 18px;
-    line-height: 22px;
-  }
-  div {
-    background-color: #117821;
-    padding: 30px;
-    border-radius: 50%;
-    svg {
-      color: #fff;
-    }
-  }
-  button {
-    position: absolute;
-    right: 55px;
-    top: 75px;
-    @media (min-width: 768px) {
-      right: 39%;
-      top: 80px;
-    }
-  }
 `;
 export const ContainerMudas = styled.div`
   display: flex;
@@ -53,6 +30,17 @@ export const ContainerMudas = styled.div`
 export const ButtonAdd = styled(Button)`
   svg {
     color: white;
+  }
+`;
+
+export const ContainerAdmin = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  button {
+    margin-bottom: 20px;
   }
 `;
 

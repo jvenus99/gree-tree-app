@@ -23,7 +23,7 @@ export const Sustentabilidade = () => {
   async function fetchNews() {
     setLoading(true);
     const { data } = await axios.get(
-      'https://newsapi.org/v2/top-headlines?country=br&category=science&apiKey=f675699f1756481d8ef67909b805c7c7'
+      'https://newsapi.org/v2/everything?q=sustentabilidade&page=2&apiKey=f675699f1756481d8ef67909b805c7c7'
     );
     setCount(data.articles.length);
     setNews(data.articles);

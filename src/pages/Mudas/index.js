@@ -1,5 +1,10 @@
 import { Container, HeaderContainer } from '../../style/styles';
-import { ButtonAdd, ContainerMudas, HeaderMudas } from './styles';
+import {
+  ButtonAdd,
+  ContainerAdmin,
+  ContainerMudas,
+  HeaderMudas,
+} from './styles';
 import { ComponentList } from '../../components/ComponentList';
 import { SearchBar } from '../../components/Search';
 import { GiPlantRoots } from 'react-icons/gi';
@@ -13,10 +18,12 @@ export const Mudas = () => {
     <>
       <HeaderContainer>
         <HeaderMudas>
-          <ButtonAdd onClick={() => setShowModal(true)}>
-            <IoIosAdd size={40} />
-          </ButtonAdd>
-          <h1>Mudas solicitadas</h1>
+          <ContainerAdmin>
+            <h1>Mudas solicitadas</h1>
+            <ButtonAdd onClick={() => setShowModal(true)}>
+              <IoIosAdd size={40} />
+            </ButtonAdd>
+          </ContainerAdmin>
           <h1 style={{ fontWeight: 'bold', color: 'white', fontSize: 28 }}>
             20
           </h1>
