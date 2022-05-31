@@ -44,7 +44,7 @@ export const ContainerAdmin = styled.div`
   }
 `;
 
-export const ContentModal = styled.div`
+export const ContentModalCreate = styled.div`
   border-radius: 8px;
   min-height: 50vh;
   width: 100%;

@@ -27,8 +27,9 @@ export const ModalDoar = ({ open, setOpen }) => {
             </InputLabel>
             <SelectStyle
               id='pontoDoacao'
+              sx={{ color: '#117821' }}
+              required
               // value={age}
-              label='Ponto de Doação'
               // onChange={handleChange}
             >
               <MenuItem value={10}>Ten</MenuItem>
@@ -39,7 +40,6 @@ export const ModalDoar = ({ open, setOpen }) => {
             <SelectStyle
               id='evento'
               // value={age}
-              label='Evento'
               // onChange={handleChange}
             >
               <MenuItem value={10}>Ten</MenuItem>

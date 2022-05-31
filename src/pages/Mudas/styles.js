@@ -69,6 +69,21 @@ export const ContentModal = styled.div`
   }
 `;
 
+export const ContentModalCreate = styled.div`
+  border-radius: 8px;
+  min-height: 40vh;
+  width: 100%;
+  margin-top: 38px;
+  color: black !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  h1 {
+    font-size: 32px;
+    text-align: left;
+  }
+`;
+
 export const ButtonCloseModal = styled(Button)`
   position: absolute !important;
   top: 2px;

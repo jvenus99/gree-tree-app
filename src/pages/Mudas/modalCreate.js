@@ -1,5 +1,10 @@
 import { Dialog, DialogContent } from '@mui/material';
-import { ButtonCloseModal, ButtonConfirm, ContentModal, Input } from './styles';
+import {
+  ButtonCloseModal,
+  ButtonConfirm,
+  ContentModalCreate,
+  Input,
+} from './styles';
 import { IoMdClose } from 'react-icons/io';
 
 export const ModalCreate = ({ open, setOpen }) => {
@@ -14,7 +19,7 @@ export const ModalCreate = ({ open, setOpen }) => {
               size={25}
             />
           </ButtonCloseModal>
-          <ContentModal>
+          <ContentModalCreate>
             <h1>Cadastrar Mudas</h1>
             <Input
               label={'Nome da Planta'}
@@ -29,7 +34,7 @@ export const ModalCreate = ({ open, setOpen }) => {
               placeholder='Digite a porcentagem de absorção'
             />
             <ButtonConfirm variant='contained'>Cadastrar</ButtonConfirm>
-          </ContentModal>
+          </ContentModalCreate>
         </DialogContent>
       </Dialog>
     </>
