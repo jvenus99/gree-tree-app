@@ -21,7 +21,7 @@ export const Home = () => {
 
   async function fetchNews() {
     const { data } = await axios.get(
-      'https://newsapi.org/v2/top-headlines?country=br&category=science&apiKey=f675699f1756481d8ef67909b805c7c7'
+      'https://newsapi.org/v2/everything?q=sustentabilidade&apiKey=f675699f1756481d8ef67909b805c7c7'
     );
     setNews(data.articles);
   }

@@ -10,17 +10,20 @@ import { BsCalendar2EventFill } from 'react-icons/bs';
 import { IoIosAdd } from 'react-icons/io';
 import { useState } from 'react';
 import { ModalCreate } from './modalCreate';
+import { ModalView } from './modalView';
 
 export const Eventos = () => {
-  const [showModal, setShowModal] = useState(false);
+  const [showModalCreate, setShowModalCreate] = useState(false);
+  const [showModalView, setShowModalView] = useState(false);
   return (
     <>
-      <ModalCreate open={showModal} setOpen={setShowModal} />
+      <ModalCreate open={showModalCreate} setOpen={setShowModalCreate} />
+      <ModalView open={showModalView} setOpen={setShowModalView} />
       <HeaderContainer>
         <HeaderEventos>
           <ContainerAdmin>
             <h1>Eventos Interact</h1>
-            <ButtonAdd onClick={() => setShowModal(true)}>
+            <ButtonAdd onClick={() => setShowModalCreate(true)}>
               <IoIosAdd size={40} />
             </ButtonAdd>
           </ContainerAdmin>
@@ -36,7 +39,7 @@ export const Eventos = () => {
             name={'Nome do evento'}
             children={new Date()}
             onClick={() => {
-              console.log('Clicou');
+              setShowModalView(true);
             }}
           />
           <ComponentList
@@ -44,7 +47,7 @@ export const Eventos = () => {
             name={'Nome do evento'}
             children={new Date()}
             onClick={() => {
-              console.log('Clicou');
+              setShowModalView(true);
             }}
           />
         </ContainerEventos>
