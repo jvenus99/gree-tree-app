@@ -18,7 +18,7 @@ export const ContainerAdmin = styled.div`
   }
 `;
 
-export const ContentModal = styled.div`
+export const ContentModalCreate = styled.div`
   border-radius: 8px;
   min-height: 65vh;
   max-height: auto;
@@ -31,6 +31,31 @@ export const ContentModal = styled.div`
   h1 {
     font-size: 32px;
     text-align: left;
+  }
+`; 
+
+export const ContentModal = styled.div`
+  border-radius: 8px;
+  min-height: 30vh;
+  width: 100%;
+  margin-top: 38px;
+  color: black !important;
+  display: flex;
+  flex-direction: column;
+  h1 {
+    font-size: 28px;
+    text-align: left;
+  }
+  span {
+    margin-top: 20px;
+    margin-bottom: 2px;
+    font-size: 18px;
+  }
+  p {
+    font-size: 18px;
+  }
+  p:nth-last-child(2) {
+    margin-bottom: 20px;
   }
 `;
 

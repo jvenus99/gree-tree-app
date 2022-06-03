@@ -1,5 +1,5 @@
 import { Dialog, DialogContent } from '@mui/material';
-import { ButtonCloseModal, ButtonConfirm, ContentModal, Input } from './styles';
+import { ButtonCloseModal, ButtonConfirm, ContentModalCreate, Input } from './styles';
 import { IoMdClose } from 'react-icons/io';
 import { useState } from 'react';
 import axios from 'axios';
@@ -45,7 +45,7 @@ export const ModalCreate = ({ open, setOpen }) => {
               size={25}
             />
           </ButtonCloseModal>
-          <ContentModal>
+          <ContentModalCreate>
             <h1>Cadastrar Ponto de Doação</h1>
             <Input
               label={'CEP'}
@@ -93,7 +93,7 @@ export const ModalCreate = ({ open, setOpen }) => {
               onChange={handleChange}
             />
             <ButtonConfirm variant='contained'>Cadastrar</ButtonConfirm>
-          </ContentModal>
+          </ContentModalCreate>
         </DialogContent>
       </Dialog>
     </>
