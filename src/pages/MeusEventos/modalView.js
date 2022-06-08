@@ -2,7 +2,7 @@ import { Dialog, DialogContent } from '@mui/material';
 import { ButtonCloseModal, ContentModal } from './styles';
 import { IoMdClose } from 'react-icons/io';
 
-export const ModalView = ({ open, setOpen }) => {
+export const ModalView = ({ open, setOpen, evento }) => {
   return (
     <>
       <Dialog open={open} fullWidth={true}>
@@ -15,15 +15,15 @@ export const ModalView = ({ open, setOpen }) => {
             />
           </ButtonCloseModal>
           <ContentModal>
-            <h1>Participar do Evento?</h1>
+            <h1>Meu Evento</h1>
             <span>Local do evento:</span>
-            <p>$Local</p>
+            <p>{evento.local}</p>
             <br />
             <span>Data do Evento:</span>
-            <p>$Data</p>
+            <p>{evento.data}</p>
             <br />
             <span>Horário de Início</span>
-            <p>$Horário</p>
+            <p>{evento.horario}</p>
           </ContentModal>
         </DialogContent>
       </Dialog>

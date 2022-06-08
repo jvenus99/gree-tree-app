@@ -14,10 +14,12 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import moment from 'moment';
 import 'moment/locale/pt-br';
+import { getMyEvents } from '../../services/eventosController';
 moment.locale('pt-br');
 
 export const Home = () => {
   const [news, setNews] = useState([]);
+  const [eventos, setEventos] = useState([]);
 
   async function fetchNews() {
     const { data } = await axios.get(
@@ -26,8 +28,19 @@ export const Home = () => {
     setNews(data.articles);
   }
 
+  async function fetchEvents() {
+    try {
+      const { data: eventos } = await getMyEvents('userId');
+      if (eventos && eventos.length > 0) {
+        setEventos(eventos.slice(0, 2));
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   useEffect(() => {
-    //fetchEvents();
+    fetchEvents();
     fetchNews();
   }, []);
   const navigate = useNavigate();
@@ -40,22 +53,22 @@ export const Home = () => {
         <HomeDesktop>
           <ListEvents>
             <h1>Meus Eventos</h1>
-            <ComponentList
-              name={'Evento'}
-              children={moment(new Date()).format('D MMM. YYYY')}
-              icon={<BsCalendar2EventFill size={30} />}
-              onClick={() => {
-                navigate('/myEvents');
-              }}
-            />
-            <ComponentList
-              name={'Evento'}
-              children={moment(new Date()).format('D MMM. YYYY')}
-              icon={<BsCalendar2EventFill size={30} />}
-              onClick={() => {
-                navigate('/myEvents');
-              }}
-            />
+            {eventos &&
+              eventos.map((evento) => (
+                <ComponentList
+                  name={evento.name}
+                  children={moment(evento.data).format('D MMM. YYYY')}
+                  icon={<BsCalendar2EventFill size={30} />}
+                  onClick={() => {
+                    navigate('/myEvents');
+                  }}
+                />
+              ))}
+            {eventos.length === 0 && (
+              <span style={{ margin: '20px' }}>
+                Você não participou de nenhum evento ainda
+              </span>
+            )}
             <SpanClick onClick={() => navigate('/myEvents')}>
               Ver Mais
             </SpanClick>

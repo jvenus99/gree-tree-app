@@ -1,8 +1,19 @@
 import { Dialog, DialogContent } from '@mui/material';
 import { ButtonCloseModal, ButtonConfirm, ContentModal } from './styles';
 import { IoMdClose } from 'react-icons/io';
+import { intoEvento } from '../../services/eventosController';
 
-export const ModalView = ({ open, setOpen }) => {
+export const ModalView = ({ open, setOpen, evento }) => {
+  async function participarEvento() {
+    try {
+      const { data } = await intoEvento(evento._id, 'userId');
+      if (data) {
+        setOpen(false);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
   return (
     <>
       <Dialog open={open} fullWidth={true}>
@@ -17,14 +28,16 @@ export const ModalView = ({ open, setOpen }) => {
           <ContentModal>
             <h1>Participar do Evento?</h1>
             <span>Local do evento:</span>
-            <p>$Local</p>
+            <p>{evento.local}</p>
             <br />
             <span>Data do Evento:</span>
-            <p>$Data</p>
+            <p>{evento.data}</p>
             <br />
             <span>Horário de Início</span>
-            <p>$Horário</p>
-            <ButtonConfirm variant='contained'>Participar</ButtonConfirm>
+            <p>{evento.horario}</p>
+            <ButtonConfirm variant='contained' onClick={participarEvento}>
+              Participar
+            </ButtonConfirm>
           </ContentModal>
         </DialogContent>
       </Dialog>

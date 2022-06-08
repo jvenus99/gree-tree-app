@@ -1,8 +1,14 @@
 import { Dialog, DialogContent } from '@mui/material';
-import { ButtonCloseModal, ButtonConfirm, ContentModalCreate, Input } from './styles';
+import {
+  ButtonCloseModal,
+  ButtonConfirm,
+  ContentModalCreate,
+  Input,
+} from './styles';
 import { IoMdClose } from 'react-icons/io';
 import { useState } from 'react';
 import axios from 'axios';
+import { createPontoDoacao } from '../../services/pontosDoacaoController';
 
 export const ModalCreate = ({ open, setOpen }) => {
   const [form, setForm] = useState({
@@ -29,6 +35,24 @@ export const ModalCreate = ({ open, setOpen }) => {
         bairro: endereco.bairro,
         cidade: endereco.localidade,
       });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function submit() {
+    try {
+      Object.Keys(form).forEach((key) => {
+        if (!form[key]) {
+          alert(`O campo ${key} é obrigatório`);
+          return;
+        }
+      });
+      const { data: ponto } = await createPontoDoacao(form);
+      if (ponto) {
+        setOpen(false);
+        alert('Ponto de doação criado com sucesso!');
+      }
     } catch (error) {
       console.log(error);
     }
@@ -92,7 +116,9 @@ export const ModalCreate = ({ open, setOpen }) => {
               value={form.numero}
               onChange={handleChange}
             />
-            <ButtonConfirm variant='contained'>Cadastrar</ButtonConfirm>
+            <ButtonConfirm variant='contained' onClick={submit}>
+              Cadastrar
+            </ButtonConfirm>
           </ContentModalCreate>
         </DialogContent>
       </Dialog>

@@ -7,7 +7,7 @@ import {
 } from './styles';
 import { IoMdClose } from 'react-icons/io';
 
-export const ModalDoar = ({ open, setOpen }) => {
+export const ModalDoar = ({ open, setOpen, muda }) => {
   return (
     <>
       <Dialog open={open} fullWidth={true}>
@@ -21,7 +21,7 @@ export const ModalDoar = ({ open, setOpen }) => {
           </ButtonCloseModal>
           <ContentModal>
             <h1>Doar Muda?</h1>
-            <span>Muda: Nome da Muda</span>
+            <span>Muda: {muda.name}</span>
             <InputLabel id='pontoDoacao'>
               Selecione um ponto de doação
             </InputLabel>
