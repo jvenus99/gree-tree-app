@@ -62,8 +62,8 @@ export const Mudas = () => {
               mudas.map((muda) => (
                 <ComponentList
                   icon={<GiPlantRoots size={25} />}
-                  name={muda.nome}
-                  children={muda.percentualAbsorcao}
+                  name={muda.name}
+                  children={`Absorção: ${muda.co2AbsorptionKg}kg`}
                   onClick={() => {
                     setMudasExibir(muda);
                     setShowModalDoar(true);
