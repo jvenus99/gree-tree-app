@@ -31,9 +31,9 @@ export const Home = () => {
 
   const fetchEvents = useCallback(async () => {
     try {
-      const { data: eventos } = await getMyEvents(user.id);
-      if (eventos && eventos.length > 0) {
-        setEventos(eventos.slice(0, 2));
+      const { data } = await getMyEvents(user.id);
+      if (data.data && data.data.length > 0) {
+        setEventos(data.data.slice(0, 2));
       }
     } catch (error) {
       console.log(error);
@@ -57,8 +57,8 @@ export const Home = () => {
             {eventos &&
               eventos.map((evento) => (
                 <ComponentList
-                  name={evento.name}
-                  children={moment(evento.data).format('D MMM. YYYY')}
+                  name={evento.e_name}
+                  children={moment(evento.e_date).format('D MMM. YYYY')}
                   icon={<BsCalendar2EventFill size={30} />}
                   onClick={() => {
                     navigate('/myEvents');
