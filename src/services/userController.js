@@ -17,6 +17,10 @@ export function getUser(id) {
   return api.get(`/users/getUserDetails/${id}`);
 }
 
+export function getUserByName(name) {
+  return api.get(`/users/getByname/${name}`);
+}
+
 export function tornarAdmin(id) {
   return api.put(`/users/userToAdmin/${id}`);
 }

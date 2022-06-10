@@ -5,7 +5,7 @@ import { SearchBar } from '../../components/Search';
 import { FaUser } from 'react-icons/fa';
 import { useEffect, useState } from 'react';
 import { ModalAdmin } from './modalAdmin';
-import { getUsers } from '../../services/userController';
+import { getUserByName, getUsers } from '../../services/userController';
 import { Loading } from '../../components/Loading';
 
 export const Usuarios = () => {
@@ -13,6 +13,7 @@ export const Usuarios = () => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(false);
   const [userExibir, setUserExibir] = useState({});
+  const [api, setApi] = useState(false);
 
   useEffect(() => {
     async function fetchData() {
@@ -28,7 +29,23 @@ export const Usuarios = () => {
       }
     }
     fetchData();
-  }, []);
+  }, [api]);
+
+  const handleChange = async (e) => {
+    try {
+      if (e.target.value.length > 0) {
+        const { data } = await getUserByName(e.target.value);
+        if (data.data && data.data.length > 0) {
+          setUsers(data.data);
+        }
+      } else {
+        setApi(true);
+      }
+    } catch (error) {
+      setApi(true);
+      console.log(error);
+    }
+  };
 
   return (
     <>
@@ -46,7 +63,7 @@ export const Usuarios = () => {
           <Loading />
         ) : (
           <ContainerUsuarios>
-            <SearchBar></SearchBar>
+            <SearchBar onChange={(e) => handleChange(e)}></SearchBar>
             {users &&
               users.map((user) => (
                 <ComponentList

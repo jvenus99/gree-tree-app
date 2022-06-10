@@ -22,6 +22,7 @@ export const ContainerPontosDoacao = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
+  margin-top: 20px;
 
   @media (min-width: 768px) {
     width: 40%;

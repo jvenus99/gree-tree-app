@@ -25,3 +25,7 @@ export function createPontoDoacao({
 export function getPontosDoacao() {
   return api.get('/donationPoints');
 }
+
+export function getDonationByAdress(address) {
+  return api.get(`/donationPoints/getByAddress/${address}`);
+}

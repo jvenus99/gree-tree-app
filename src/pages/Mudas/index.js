@@ -12,7 +12,7 @@ import { IoIosAdd } from 'react-icons/io';
 import { useEffect, useState } from 'react';
 import { ModalCreate } from './modalCreate';
 import { ModalDoar } from './modalDoar';
-import { getMudas } from '../../services/mudasController';
+import { getMudas, getMudasByName } from '../../services/mudasController';
 import { Loading } from '../../components/Loading';
 
 export const Mudas = () => {
@@ -22,6 +22,7 @@ export const Mudas = () => {
   const [loading, setLoading] = useState(false);
   const [mudasExibir, setMudasExibir] = useState({});
   const user = JSON.parse(localStorage.getItem('user'));
+  const [api, setApi] = useState(false);
 
   useEffect(() => {
     async function fetchData() {
@@ -37,11 +38,27 @@ export const Mudas = () => {
       }
     }
     fetchData();
-  }, []);
+  }, [api]);
 
   useEffect(() => {
     setLoading(false);
   }, [mudas]);
+
+  const handleChange = async (e) => {
+    try {
+      if (e.target.value.length > 0 || e.target.value.length !== '') {
+        const { data } = await getMudasByName(e.target.value);
+        if (data.data && data.data.length > 0) {
+          setMudas(data.data);
+        }
+      } else {
+        setApi(true);
+      }
+    } catch (error) {
+      setApi(true);
+      console.log(error);
+    }
+  };
 
   return (
     <>
@@ -65,7 +82,7 @@ export const Mudas = () => {
           <Loading />
         ) : (
           <ContainerMudas>
-            <SearchBar></SearchBar>
+            <SearchBar onChange={(e) => handleChange(e)}></SearchBar>
             {mudas &&
               mudas.map((muda) => (
                 <ComponentList

@@ -15,3 +15,7 @@ export function getMudas() {
 export function doar(form) {
   return api.post('/transactions', form);
 }
+
+export function getMudasByName(name) {
+  return api.get(`/crops/getByname/${name}`);
+}

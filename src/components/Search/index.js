@@ -1,7 +1,7 @@
 import { Input, SearchContainer } from './styles';
 import { AiOutlineSearch } from 'react-icons/ai';
 
-export const SearchBar = () => {
+export const SearchBar = ({ onChange }) => {
   return (
     <>
       <SearchContainer>
@@ -12,6 +12,7 @@ export const SearchBar = () => {
         <Input
           placeholder='Busque...'
           variant={'standard'}
+          onChange={(e) => onChange(e)}
           InputProps={{
             disableUnderline: true,
           }}

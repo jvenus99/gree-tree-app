@@ -7,7 +7,10 @@ import { useEffect, useState } from 'react';
 import { ModalCreate } from './modalCreate';
 import { GoLocation } from 'react-icons/go';
 import { ModalView } from './modalView';
-import { getPontosDoacao } from '../../services/pontosDoacaoController';
+import {
+  getDonationByAdress,
+  getPontosDoacao,
+} from '../../services/pontosDoacaoController';
 import { Loading } from '../../components/Loading';
 
 export const PontosDoacao = () => {
@@ -17,6 +20,7 @@ export const PontosDoacao = () => {
   const [loading, setLoading] = useState(false);
   const [pontoExibir, setPontoExibir] = useState({});
   const user = JSON.parse(localStorage.getItem('user'));
+  const [api, setApi] = useState(false);
 
   useEffect(() => {
     setLoading(true);
@@ -32,11 +36,27 @@ export const PontosDoacao = () => {
       }
     }
     fecthData();
-  }, []);
+  }, [api]);
 
   useEffect(() => {
     setLoading(false);
   }, [pontos]);
+
+  const handleChange = async (e) => {
+    try {
+      if (e.target.value.length > 0) {
+        const { data } = await getDonationByAdress(e.target.value);
+        if (data.data && data.data.length > 0) {
+          setPontos(data.data);
+        }
+      } else {
+        setApi(true);
+      }
+    } catch (error) {
+      setApi(true);
+      console.log(error);
+    }
+  };
 
   return (
     <>
@@ -71,7 +91,7 @@ export const PontosDoacao = () => {
           <Loading />
         ) : (
           <ContainerPontosDoacao>
-            <SearchBar />
+            <SearchBar onChange={(e) => handleChange(e)} />
             {pontos &&
               pontos.map((ponto) => (
                 <ComponentList
