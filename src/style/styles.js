@@ -2,6 +2,9 @@ import styled from 'styled-components';
 
 export const HeaderContainer = styled.div`
   height: 30vh;
+  @media (max-height: 700px) {
+    height: 40vh;
+  }
   background-color: #c3ce0e;
   border-radius: 0px 0px 60px 60px;
   width: 100%;
