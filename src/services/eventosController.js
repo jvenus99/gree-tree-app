@@ -14,7 +14,11 @@ export function getEventos() {
 }
 
 export function getMyEvents(userId) {
-  return api.get(`/myEvents/${userId}`);
+  return api.get(`/eventHasUsers/findEventsByUsers/${userId}`);
+}
+
+export function getNextEvents(userId) {
+  return api.get(`/events/nextEvents/${userId}`);
 }
 
 export function intoEvento(idEvento, idUser) {
@@ -22,4 +26,8 @@ export function intoEvento(idEvento, idUser) {
     idUser,
     idEvento,
   });
+}
+
+export function leaveEvento(form) {
+  return api.post(`/eventHasUsers`, form);
 }

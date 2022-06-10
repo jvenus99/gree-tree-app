@@ -1,7 +1,7 @@
-import { api } from './index';
+import axios from 'axios';
 
 export function login({ email, password }) {
-  return api.post('/login', {
+  return axios.post('https://green-tree-app-api.herokuapp.com/auth/login', {
     email,
     password,
   });

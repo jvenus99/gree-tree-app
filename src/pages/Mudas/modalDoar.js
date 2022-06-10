@@ -6,8 +6,57 @@ import {
   SelectStyle,
 } from './styles';
 import { IoMdClose } from 'react-icons/io';
+import { doar } from '../../services/mudasController';
+import { useEffect, useState } from 'react';
+import { getPontosDoacao } from '../../services/pontosDoacaoController';
+import { getEventos } from '../../services/eventosController';
 
 export const ModalDoar = ({ open, setOpen, muda }) => {
+  const user = JSON.parse(localStorage.getItem('user'));
+  const [form, setForm] = useState({
+    crop: `${muda.id}`,
+    user: user.id,
+    event: '',
+    donationPoint: '',
+    date: new Date(),
+  });
+  const [pontosDoacao, setPontosDoacao] = useState([]);
+  const [eventos, setEventos] = useState([]);
+
+  async function doarMuda() {
+    try {
+      const { data } = await doar(form);
+      if (data) {
+        alert('Muda doada com sucesso!');
+        setOpen(false);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const { data: pontos } = await getPontosDoacao();
+        if (pontos) {
+          setPontosDoacao(pontos);
+        }
+        const { data: events } = await getEventos();
+        if (events) {
+          setEventos(events);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    fetchData();
+  }, []);
+
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
   return (
     <>
       <Dialog open={open} fullWidth={true}>
@@ -27,26 +76,31 @@ export const ModalDoar = ({ open, setOpen, muda }) => {
             </InputLabel>
             <SelectStyle
               id='pontoDoacao'
+              name='donationPoint'
               sx={{ color: '#117821' }}
               required
-              // value={age}
-              // onChange={handleChange}
+              value={form.donationPoint}
+              onChange={handleChange}
             >
-              <MenuItem value={10}>Ten</MenuItem>
-              <MenuItem value={20}>Twenty</MenuItem>
-              <MenuItem value={30}>Thirty</MenuItem>
+              {pontosDoacao.map((ponto) => (
+                <MenuItem value={ponto.id}>{ponto.name}</MenuItem>
+              ))}
             </SelectStyle>
             <InputLabel id='evento'>Selecione um evento ou não</InputLabel>
             <SelectStyle
               id='evento'
-              // value={age}
-              // onChange={handleChange}
+              name='event'
+              sx={{ color: '#117821' }}
+              value={form.event}
+              onChange={handleChange}
             >
-              <MenuItem value={10}>Ten</MenuItem>
-              <MenuItem value={20}>Twenty</MenuItem>
-              <MenuItem value={30}>Thirty</MenuItem>
+              {eventos.map((evento) => (
+                <MenuItem value={evento.id}>{evento.name}</MenuItem>
+              ))}
             </SelectStyle>
-            <ButtonConfirm variant='contained'>Doar</ButtonConfirm>
+            <ButtonConfirm variant='contained' onClick={doarMuda}>
+              Doar
+            </ButtonConfirm>
           </ContentModal>
         </DialogContent>
       </Dialog>

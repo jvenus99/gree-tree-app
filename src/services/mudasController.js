@@ -11,3 +11,7 @@ export function createMuda({ name, codigoPlanta, porcentagemAbsorção }) {
 export function getMudas() {
   return api.get('/crops');
 }
+
+export function doar(form) {
+  return api.post('/transactions', form);
+}

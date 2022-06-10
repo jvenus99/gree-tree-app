@@ -4,9 +4,10 @@ import { IoMdClose } from 'react-icons/io';
 import { intoEvento } from '../../services/eventosController';
 
 export const ModalView = ({ open, setOpen, evento }) => {
+  const user = JSON.parse(localStorage.getItem('user'));
   async function participarEvento() {
     try {
-      const { data } = await intoEvento(evento._id, 'userId');
+      const { data } = await intoEvento(evento._id, user.id);
       if (data) {
         setOpen(false);
       }
@@ -35,7 +36,10 @@ export const ModalView = ({ open, setOpen, evento }) => {
             <br />
             <span>Horário de Início</span>
             <p>{evento.horario}</p>
-            <ButtonConfirm variant='contained' onClick={participarEvento}>
+            <ButtonConfirm
+              variant='contained'
+              onClick={() => participarEvento()}
+            >
               Participar
             </ButtonConfirm>
           </ContentModal>

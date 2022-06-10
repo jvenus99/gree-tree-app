@@ -20,6 +20,7 @@ moment.locale('pt-br');
 export const Home = () => {
   const [news, setNews] = useState([]);
   const [eventos, setEventos] = useState([]);
+  const user = JSON.parse(localStorage.getItem('user'));
 
   async function fetchNews() {
     const { data } = await axios.get(
@@ -30,7 +31,7 @@ export const Home = () => {
 
   async function fetchEvents() {
     try {
-      const { data: eventos } = await getMyEvents('userId');
+      const { data: eventos } = await getMyEvents(user.id);
       if (eventos && eventos.length > 0) {
         setEventos(eventos.slice(0, 2));
       }
@@ -65,7 +66,7 @@ export const Home = () => {
                 />
               ))}
             {eventos.length === 0 && (
-              <span style={{ margin: '20px' }}>
+              <span style={{ margin: '20px', textAlign: 'center' }}>
                 Você não participou de nenhum evento ainda
               </span>
             )}

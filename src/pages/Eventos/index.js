@@ -20,6 +20,7 @@ export const Eventos = () => {
   const [eventos, setEventos] = useState([]);
   const [loading, setLoading] = useState(false);
   const [eventoExibir, setEventoExibir] = useState({});
+  const user = JSON.parse(localStorage.getItem('user'));
 
   useEffect(() => {
     setLoading(true);
@@ -49,9 +50,11 @@ export const Eventos = () => {
         <HeaderEventos>
           <ContainerAdmin>
             <h1>Eventos Interact</h1>
-            <ButtonAdd onClick={() => setShowModalCreate(true)}>
-              <IoIosAdd size={40} />
-            </ButtonAdd>
+            {user.isAdmin && (
+              <ButtonAdd onClick={() => setShowModalCreate(true)}>
+                <IoIosAdd size={40} />
+              </ButtonAdd>
+            )}
           </ContainerAdmin>
           <h1 style={{ fontWeight: 'bold', color: 'white', fontSize: 28 }}>
             {eventos.length}

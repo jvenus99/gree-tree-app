@@ -21,10 +21,11 @@ export const Mudas = () => {
   const [mudas, setMudas] = useState([]);
   const [loading, setLoading] = useState(false);
   const [mudasExibir, setMudasExibir] = useState({});
+  const user = JSON.parse(localStorage.getItem('user'));
 
   useEffect(() => {
-    setLoading(true);
     async function fetchData() {
+      setLoading(true);
       try {
         const { data: mudas } = await getMudas();
         if (mudas && mudas.length > 0) {
@@ -43,9 +44,11 @@ export const Mudas = () => {
         <HeaderMudas>
           <ContainerAdmin>
             <h1>Mudas solicitadas</h1>
-            <ButtonAdd onClick={() => setShowModalCreate(true)}>
-              <IoIosAdd size={40} />
-            </ButtonAdd>
+            {user.isAdmin && (
+              <ButtonAdd onClick={() => setShowModalCreate(true)}>
+                <IoIosAdd size={40} />
+              </ButtonAdd>
+            )}
           </ContainerAdmin>
           <h1 style={{ fontWeight: 'bold', color: 'white', fontSize: 28 }}>
             {mudas.length}

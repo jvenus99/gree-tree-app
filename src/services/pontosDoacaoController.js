@@ -8,7 +8,7 @@ export function createPontoDoacao({
   numero,
   bairro,
 }) {
-  return api.post('/users', {
+  return api.post('/donationPoints', {
     cep,
     name,
     cidade,

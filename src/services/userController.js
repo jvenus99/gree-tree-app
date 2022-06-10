@@ -18,5 +18,5 @@ export function getUser(id) {
 }
 
 export function tornarAdmin(id) {
-  return api.put(`/users/${id}/admin`);
+  return api.put(`/users/userToAdmin/${id}`);
 }

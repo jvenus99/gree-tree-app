@@ -20,8 +20,7 @@ export const Cadastro = () => {
 
   async function signUp() {
     try {
-      const { data: user } = await createUser(form);
-      console.log(user);
+      await createUser(form);
       navigate('/login');
     } catch (error) {
       console.log(error);

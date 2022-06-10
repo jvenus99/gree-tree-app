@@ -42,7 +42,7 @@ export const ModalCreate = ({ open, setOpen }) => {
 
   async function submit() {
     try {
-      Object.Keys(form).forEach((key) => {
+      Object.keys(form).forEach((key) => {
         if (!form[key]) {
           alert(`O campo ${key} é obrigatório`);
           return;
@@ -116,7 +116,7 @@ export const ModalCreate = ({ open, setOpen }) => {
               value={form.numero}
               onChange={handleChange}
             />
-            <ButtonConfirm variant='contained' onClick={submit}>
+            <ButtonConfirm variant='contained' onClick={() => submit()}>
               Cadastrar
             </ButtonConfirm>
           </ContentModalCreate>

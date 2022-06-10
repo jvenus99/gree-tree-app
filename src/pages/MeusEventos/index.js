@@ -12,12 +12,13 @@ export const MeusEventos = () => {
   const [eventos, setEventos] = useState([]);
   const [loading, setLoading] = useState(false);
   const [eventoExibir, setEventoExibir] = useState({});
+  const user = JSON.parse(localStorage.getItem('user'));
 
   useEffect(() => {
     async function fetchData() {
       try {
         setLoading(true);
-        const { data: eventos } = await getMyEvents('userId');
+        const { data: eventos } = await getMyEvents(user.id);
         if (eventos && eventos.length > 0) {
           setEventos(eventos);
           setLoading(false);

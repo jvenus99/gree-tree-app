@@ -1,14 +1,28 @@
-import { useState } from 'react';
+import { useCallback, useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Context } from '../../context/authContext';
 import { PageAuth } from '../../style/styles';
 import { ButtonConfirm, Input, LoginContainer, SpanClick } from './styles';
 
 export const Login = () => {
   const navigate = useNavigate();
+  const { handleLogin } = useContext(Context);
   const [form, setForm] = useState({
     email: '',
     password: '',
   });
+
+  const submit = useCallback(
+    async (e) => {
+      e.preventDefault();
+      try {
+        handleLogin(form);
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    [handleLogin, form]
+  );
 
   function handleChange(e) {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -44,7 +58,9 @@ export const Login = () => {
           value={form.password}
           onChange={handleChange}
         />
-        <ButtonConfirm variant='contained'>Login</ButtonConfirm>
+        <ButtonConfirm variant='contained' onClick={(e) => submit(e)}>
+          Login
+        </ButtonConfirm>
         <SpanClick>Esqueci a senha</SpanClick>
         <span>
           Ainda não tem conta?{' '}

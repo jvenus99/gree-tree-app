@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 const headers = {
+  Authorization: localStorage.getItem('token'),
   'Content-Type': 'application/json',
-  // Authorization: localStorage.getItem('token'),
 };
 
 export const api = axios.create({

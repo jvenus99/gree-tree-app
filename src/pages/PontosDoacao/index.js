@@ -16,6 +16,7 @@ export const PontosDoacao = () => {
   const [pontos, setPontos] = useState([]);
   const [loading, setLoading] = useState(false);
   const [pontoExibir, setPontoExibir] = useState({});
+  const user = JSON.parse(localStorage.getItem('user'));
 
   useEffect(() => {
     setLoading(true);
@@ -45,9 +46,11 @@ export const PontosDoacao = () => {
         <HeaderChildren>
           <ContainerAdmin>
             <h1>Pontos de Doação</h1>
-            <ButtonAdd onClick={() => setShowModal(true)}>
-              <IoIosAdd size={40} />
-            </ButtonAdd>
+            {user.isAdmin && (
+              <ButtonAdd onClick={() => setShowModal(true)}>
+                <IoIosAdd size={40} />
+              </ButtonAdd>
+            )}
           </ContainerAdmin>
           <h1 style={{ fontWeight: 'bold', color: 'white', fontSize: 28 }}>
             {pontos.length}

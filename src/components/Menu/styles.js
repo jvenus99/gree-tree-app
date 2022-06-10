@@ -33,12 +33,25 @@ export const MenuContent = styled.div`
 `;
 
 export const MenuItemStyle = styled(MenuItem)`
+  display: flex;
+  align-items: center;
   a {
     text-align: right;
     color: #117821;
     font-size: 18px;
+    margin-left: 5px;
     @media (min-width: 768px) {
       font-size: 24px;
+      margin-left: 15px;
+    }
+    svg {
+      position: absolute;
+      left: 0;
+      top: 15px;
+      margin-right: 10px;
+      @media (min-width: 768px) {
+        top: 13px;
+      }
     }
   }
 `;
