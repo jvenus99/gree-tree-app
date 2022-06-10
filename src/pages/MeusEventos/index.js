@@ -28,7 +28,7 @@ export const MeusEventos = () => {
       }
     }
     fetchData();
-  }, []);
+  }, [user.id]);
 
   return (
     <>

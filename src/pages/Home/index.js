@@ -10,7 +10,7 @@ import {
 import { BsCalendar2EventFill } from 'react-icons/bs';
 import { BiNews } from 'react-icons/bi';
 import { useNavigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import axios from 'axios';
 import moment from 'moment';
 import 'moment/locale/pt-br';
@@ -29,7 +29,7 @@ export const Home = () => {
     setNews(data.articles);
   }
 
-  async function fetchEvents() {
+  const fetchEvents = useCallback(async () => {
     try {
       const { data: eventos } = await getMyEvents(user.id);
       if (eventos && eventos.length > 0) {
@@ -38,12 +38,12 @@ export const Home = () => {
     } catch (error) {
       console.log(error);
     }
-  }
+  }, [user.id]);
 
   useEffect(() => {
     fetchEvents();
     fetchNews();
-  }, []);
+  }, [fetchEvents]);
   const navigate = useNavigate();
   return (
     <>
