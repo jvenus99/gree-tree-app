@@ -9,12 +9,12 @@ import { IoMdClose } from 'react-icons/io';
 import { useState } from 'react';
 import { createEvento } from '../../services/eventosController';
 
-export const ModalCreate = ({ open, setOpen }) => {
+export const ModalCreate = ({ open, setOpen, eventos, setEventos }) => {
   const [form, setForm] = useState({
-    name:'',
-    local:'',
-    data:'',
-    horario:'',
+    name: '',
+    location: '',
+    date: '',
+    time: '',
   });
 
   function handleChange(e) {
@@ -23,15 +23,17 @@ export const ModalCreate = ({ open, setOpen }) => {
 
   async function submit() {
     try {
-      Object.Keys(form).forEach((key) => {
+      Object.keys(form).forEach((key) => {
         if (!form[key]) {
           alert(`O campo ${key} é obrigatório`);
           return;
         }
       });
-      const { data: evento } = await createEvento(form);
-      if (evento) {
+      const { data } = await createEvento(form);
+      if (data.event) {
+        setEventos([...eventos, data.event]);
         setOpen(false);
+        setForm({});
         alert('Evento cadastrado com sucesso!');
       }
     } catch (error) {
@@ -43,7 +45,12 @@ export const ModalCreate = ({ open, setOpen }) => {
     <>
       <Dialog open={open} fullWidth={true}>
         <DialogContent>
-          <ButtonCloseModal onClick={() => setOpen(false)}>
+          <ButtonCloseModal
+            onClick={() => {
+              setOpen(false);
+              setForm({});
+            }}
+          >
             <IoMdClose
               style={{ background: '#117821', borderRadius: '50%' }}
               color={'white'}
@@ -58,30 +65,35 @@ export const ModalCreate = ({ open, setOpen }) => {
               name='name'
               required
               value={form.name}
-              onChange={handleChange}              
+              onChange={handleChange}
             />
             <Input
               label={'Local'}
               placeholder='Digite o enedereço do evento'
               required
-              value={form.local}
+              name='location'
+              value={form.location}
               onChange={handleChange}
             />
-            <Input 
-              type='date' 
-              placeholder='Data do evento' 
-              required 
-              value={form.data}
-              onChange={handleChange}
-            />
-            <Input 
-              type='time' 
-              placeholder='Digite o nome do evento' 
+            <Input
+              type='date'
+              placeholder='Data do evento'
+              name='date'
               required
-              value={form.horario}
+              value={form.date}
               onChange={handleChange}
             />
-            <ButtonConfirm variant='contained' onClick={submit}>Cadastrar</ButtonConfirm>
+            <Input
+              type='time'
+              placeholder='Digite o nome do evento'
+              name='time'
+              required
+              value={form.time}
+              onChange={handleChange}
+            />
+            <ButtonConfirm variant='contained' onClick={submit}>
+              Cadastrar
+            </ButtonConfirm>
           </ContentModalCreate>
         </DialogContent>
       </Dialog>

@@ -16,7 +16,7 @@ export const ModalView = ({ open, setOpen, pontoDoacao }) => {
           </ButtonCloseModal>
           <ContentModal>
             <h1>Informações do ponto de doação</h1>
-            <span>cep:</span>
+            <span>Cep:</span>
             <p>{pontoDoacao.cep}</p>
             <br />
             <span>Cidade:</span>

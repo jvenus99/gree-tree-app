@@ -7,14 +7,18 @@ export function createPontoDoacao({
   logradouro,
   numero,
   bairro,
+  openAt,
+  closeAt,
 }) {
   return api.post('/donationPoints', {
     cep,
     name,
     cidade,
     logradouro,
-    numero,
+    numero: parseInt(numero),
     bairro,
+    openAt,
+    closeAt,
   });
 }
 

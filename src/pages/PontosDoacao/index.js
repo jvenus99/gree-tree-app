@@ -1,7 +1,7 @@
 import { Container, HeaderChildren, HeaderContainer } from '../../style/styles';
 import { ComponentList } from '../../components/ComponentList';
 import { SearchBar } from '../../components/Search';
-import { ButtonAdd, ContainerAdmin } from './styles';
+import { ButtonAdd, ContainerAdmin, ContainerPontosDoacao } from './styles';
 import { IoIosAdd } from 'react-icons/io';
 import { useEffect, useState } from 'react';
 import { ModalCreate } from './modalCreate';
@@ -34,9 +34,18 @@ export const PontosDoacao = () => {
     fecthData();
   }, []);
 
+  useEffect(() => {
+    setLoading(false);
+  }, [pontos]);
+
   return (
     <>
-      <ModalCreate open={showModal} setOpen={setShowModal} />
+      <ModalCreate
+        open={showModal}
+        setOpen={setShowModal}
+        pontosDoacao={pontos}
+        setPontosDoacao={setPontos}
+      />
       <ModalView
         open={showModalView}
         setOpen={setShowModalView}
@@ -61,7 +70,7 @@ export const PontosDoacao = () => {
         {loading ? (
           <Loading />
         ) : (
-          <>
+          <ContainerPontosDoacao>
             <SearchBar />
             {pontos &&
               pontos.map((ponto) => (
@@ -75,7 +84,7 @@ export const PontosDoacao = () => {
                   }}
                 />
               ))}
-          </>
+          </ContainerPontosDoacao>
         )}
       </Container>
     </>

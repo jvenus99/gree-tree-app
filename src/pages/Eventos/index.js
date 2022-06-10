@@ -13,6 +13,9 @@ import { ModalCreate } from './modalCreate';
 import { ModalView } from './modalView';
 import { getEventos } from '../../services/eventosController';
 import { Loading } from '../../components/Loading';
+import moment from 'moment';
+import 'moment/locale/pt-br';
+moment.locale('pt-br');
 
 export const Eventos = () => {
   const [showModalCreate, setShowModalCreate] = useState(false);
@@ -40,7 +43,12 @@ export const Eventos = () => {
 
   return (
     <>
-      <ModalCreate open={showModalCreate} setOpen={setShowModalCreate} />
+      <ModalCreate
+        open={showModalCreate}
+        setOpen={setShowModalCreate}
+        eventos={eventos}
+        setEventos={setEventos}
+      />
       <ModalView
         open={showModalView}
         setOpen={setShowModalView}
@@ -71,7 +79,7 @@ export const Eventos = () => {
                 <ComponentList
                   icon={<BsCalendar2EventFill size={25} />}
                   name={evento.name}
-                  children={evento.data}
+                  children={moment(evento.date).format('DD/MM/YYYY')}
                   onClick={() => {
                     setEventoExibir(evento);
                     setShowModalView(true);

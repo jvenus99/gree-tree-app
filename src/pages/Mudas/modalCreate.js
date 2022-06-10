@@ -9,11 +9,11 @@ import { IoMdClose } from 'react-icons/io';
 import { useState } from 'react';
 import { createMuda } from '../../services/mudasController';
 
-export const ModalCreate = ({ open, setOpen }) => {
+export const ModalCreate = ({ open, setOpen, setMudas, mudas }) => {
   const [form, setForm] = useState({
     name: '',
-    codigoPlanta: '',
-    porcentagemAbsorção: ''
+    code: '',
+    co2AbsorptionKg: '',
   });
 
   function handleChange(e) {
@@ -22,15 +22,17 @@ export const ModalCreate = ({ open, setOpen }) => {
 
   async function submit() {
     try {
-      Object.Keys(form).forEach((key) => {
+      Object.keys(form).forEach((key) => {
         if (!form[key]) {
           alert(`O campo ${key} é obrigatório`);
           return;
         }
       });
-      const { data: muda } = await createMuda(form);
-      if (muda) {
+      const { data } = await createMuda(form);
+      if (data.muda) {
         setOpen(false);
+        setMudas([...mudas, data.muda]);
+        setForm({});
         alert('Muda cadastrada com sucesso!');
       }
     } catch (error) {
@@ -53,23 +55,28 @@ export const ModalCreate = ({ open, setOpen }) => {
             <h1>Cadastrar Mudas</h1>
             <Input
               label={'Nome da Planta'}
+              name='name'
               placeholder='Digite o nome da planta'
-              value={form.nome}
+              value={form.name}
               onChange={handleChange}
             />
             <Input
               label={'Código da Planta'}
+              name='code'
               placeholder='Digite o código da planta'
-              value={form.codigoPlanta}
+              value={form.code}
               onChange={handleChange}
             />
             <Input
               label={'Porcentagem de Absorção'}
+              name='co2AbsorptionKg'
               placeholder='Digite a porcentagem de absorção'
-              value={form.porcentagemAbsorção}
+              value={form.co2AbsorptionKg}
               onChange={handleChange}
             />
-            <ButtonConfirm variant='contained' onClick ={submit}>Cadastrar</ButtonConfirm>
+            <ButtonConfirm variant='contained' onClick={submit}>
+              Cadastrar
+            </ButtonConfirm>
           </ContentModalCreate>
         </DialogContent>
       </Dialog>

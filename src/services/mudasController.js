@@ -1,10 +1,10 @@
 import { api } from './index';
 
-export function createMuda({ name, codigoPlanta, porcentagemAbsorção }) {
+export function createMuda({ name, code, co2AbsorptionKg }) {
   return api.post('/crops', {
     name,
-    codigoPlanta,
-    porcentagemAbsorção,
+    code,
+    co2AbsorptionKg,
   });
 }
 

@@ -1,14 +1,18 @@
 import { Dialog, DialogContent } from '@mui/material';
 import { ButtonCloseModal, ButtonConfirm, ContentModal } from './styles';
 import { IoMdClose } from 'react-icons/io';
-import { intoEvento } from '../../services/eventosController';
+import { leaveEvento } from '../../services/eventosController';
+import moment from 'moment';
+import 'moment/locale/pt-br';
+moment.locale('pt-br');
 
 export const ModalView = ({ open, setOpen, evento }) => {
   const user = JSON.parse(localStorage.getItem('user'));
   async function participarEvento() {
     try {
-      const { data } = await intoEvento(evento._id, user.id);
+      const { data } = await leaveEvento(evento.id, user.id);
       if (data) {
+        alert('Participação Confirmada');
         setOpen(false);
       }
     } catch (error) {
@@ -29,13 +33,13 @@ export const ModalView = ({ open, setOpen, evento }) => {
           <ContentModal>
             <h1>Participar do Evento?</h1>
             <span>Local do evento:</span>
-            <p>{evento.local}</p>
+            <p>{evento.location}</p>
             <br />
             <span>Data do Evento:</span>
-            <p>{evento.data}</p>
+            <p>{moment(evento.date).format('DD/MM/YYYY')}</p>
             <br />
             <span>Horário de Início</span>
-            <p>{evento.horario}</p>
+            <p>{moment(evento.date).format('hh:mm A')}</p>
             <ButtonConfirm
               variant='contained'
               onClick={() => participarEvento()}

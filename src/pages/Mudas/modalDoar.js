@@ -14,21 +14,24 @@ import { getEventos } from '../../services/eventosController';
 export const ModalDoar = ({ open, setOpen, muda }) => {
   const user = JSON.parse(localStorage.getItem('user'));
   const [form, setForm] = useState({
-    crop: `${muda.id}`,
-    user: user.id,
     event: '',
     donationPoint: '',
-    date: new Date(),
   });
   const [pontosDoacao, setPontosDoacao] = useState([]);
   const [eventos, setEventos] = useState([]);
 
   async function doarMuda() {
     try {
-      const { data } = await doar(form);
+      const { data } = await doar({
+        ...form,
+        crop: muda.id,
+        user: user.id,
+        date: new Date(),
+      });
       if (data) {
         alert('Muda doada com sucesso!');
         setOpen(false);
+        setForm({});
       }
     } catch (error) {
       console.log(error);
@@ -61,7 +64,12 @@ export const ModalDoar = ({ open, setOpen, muda }) => {
     <>
       <Dialog open={open} fullWidth={true}>
         <DialogContent>
-          <ButtonCloseModal onClick={() => setOpen(false)}>
+          <ButtonCloseModal
+            onClick={() => {
+              setOpen(false);
+              setForm({});
+            }}
+          >
             <IoMdClose
               style={{ background: '#117821', borderRadius: '50%' }}
               color={'white'}

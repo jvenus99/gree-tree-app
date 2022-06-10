@@ -10,14 +10,21 @@ import { useState } from 'react';
 import axios from 'axios';
 import { createPontoDoacao } from '../../services/pontosDoacaoController';
 
-export const ModalCreate = ({ open, setOpen }) => {
+export const ModalCreate = ({
+  open,
+  setOpen,
+  pontosDoacao,
+  setPontosDoacao,
+}) => {
   const [form, setForm] = useState({
     cep: '',
-    nome: '',
+    name: '',
     logradouro: '',
     numero: '',
     bairro: '',
     cidade: '',
+    openAt: `9:00`,
+    closeAt: `18:00`,
   });
 
   function handleChange(e) {
@@ -48,9 +55,11 @@ export const ModalCreate = ({ open, setOpen }) => {
           return;
         }
       });
-      const { data: ponto } = await createPontoDoacao(form);
-      if (ponto) {
+      const { data } = await createPontoDoacao(form);
+      if (data.donationPoint) {
         setOpen(false);
+        setPontosDoacao([...pontosDoacao, data.donationPoint]);
+        setForm({});
         alert('Ponto de doação criado com sucesso!');
       }
     } catch (error) {
@@ -82,9 +91,9 @@ export const ModalCreate = ({ open, setOpen }) => {
             />
             <Input
               label={'Nome do Local'}
-              name='nome'
+              name='name'
               placeholder='Digite o nome do local'
-              value={form.nome}
+              value={form.name}
               onChange={handleChange}
             />
             <Input

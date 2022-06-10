@@ -1,11 +1,15 @@
 import { api } from './index';
+import moment from 'moment';
+import 'moment/locale/pt-br';
+moment.locale('pt-br');
 
-export function createEvento({ name, local, data, horario }) {
+export function createEvento({ name, location, date, time }) {
+  const data = moment(date).format('YYYY/MM/DD');
+  const dataTime = moment(`${data} ${time}`);
   return api.post('/events', {
     name,
-    local,
-    data,
-    horario,
+    location,
+    date: dataTime,
   });
 }
 
@@ -21,13 +25,6 @@ export function getNextEvents(userId) {
   return api.get(`/events/nextEvents/${userId}`);
 }
 
-export function intoEvento(idEvento, idUser) {
-  return api.post(`/events/participate`, {
-    idUser,
-    idEvento,
-  });
-}
-
-export function leaveEvento(form) {
-  return api.post(`/eventHasUsers`, form);
+export function leaveEvento(event, user) {
+  return api.post(`/eventHasUsers`, { event, user, registerDate: new Date() });
 }

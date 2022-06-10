@@ -6,7 +6,7 @@ import { tornarAdmin } from '../../services/userController';
 export const ModalAdmin = ({ open, setOpen, user }) => {
   async function submit() {
     try {
-      const { data } = await tornarAdmin(user._id);
+      const { data } = await tornarAdmin(user.id);
       if (data) {
         setOpen(false);
       }

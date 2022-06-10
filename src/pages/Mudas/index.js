@@ -38,6 +38,11 @@ export const Mudas = () => {
     }
     fetchData();
   }, []);
+
+  useEffect(() => {
+    setLoading(false);
+  }, [mudas]);
+
   return (
     <>
       <HeaderContainer>
@@ -74,7 +79,12 @@ export const Mudas = () => {
                 />
               ))}
 
-            <ModalCreate open={showModalCreate} setOpen={setShowModalCreate} />
+            <ModalCreate
+              open={showModalCreate}
+              setOpen={setShowModalCreate}
+              mudas={mudas}
+              setMudas={setMudas}
+            />
             <ModalDoar
               open={showModalDoar}
               setOpen={setShowModalDoar}

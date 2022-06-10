@@ -18,6 +18,21 @@ export const ContainerAdmin = styled.div`
   }
 `;
 
+export const ContainerPontosDoacao = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  @media (min-width: 768px) {
+    width: 40%;
+    align-self: center;
+    background-color: rgba(17, 120, 33, 0.1);
+    min-height: 70vh;
+    border-radius: 30px;
+    max-height: 100%;
+  }
+`;
+
 export const ContentModalCreate = styled.div`
   border-radius: 8px;
   min-height: 65vh;
@@ -32,7 +47,7 @@ export const ContentModalCreate = styled.div`
     font-size: 32px;
     text-align: left;
   }
-`; 
+`;
 
 export const ContentModal = styled.div`
   border-radius: 8px;

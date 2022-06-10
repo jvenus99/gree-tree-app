@@ -14,7 +14,7 @@ export function getUsers() {
 }
 
 export function getUser(id) {
-  return api.get(`/users/${id}`);
+  return api.get(`/users/getUserDetails/${id}`);
 }
 
 export function tornarAdmin(id) {

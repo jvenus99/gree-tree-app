@@ -6,6 +6,7 @@ import { ModalView } from './modalView';
 import { ContainerEventos } from './styles';
 import { getMyEvents } from '../../services/eventosController';
 import { Loading } from '../../components/Loading';
+import moment from 'moment';
 
 export const MeusEventos = () => {
   const [showModal, setShowModal] = useState(false);
@@ -18,9 +19,9 @@ export const MeusEventos = () => {
     async function fetchData() {
       try {
         setLoading(true);
-        const { data: eventos } = await getMyEvents(user.id);
-        if (eventos && eventos.length > 0) {
-          setEventos(eventos);
+        const { data } = await getMyEvents(user.id);
+        if (data.data && data.data.length > 0) {
+          setEventos(data.data);
           setLoading(false);
         }
       } catch (error) {
@@ -55,8 +56,8 @@ export const MeusEventos = () => {
                 {eventos.map((evento) => (
                   <ComponentList
                     icon={<BsCalendar2EventFill size={25} />}
-                    name={evento.nome}
-                    children={evento.data}
+                    name={evento.e_name}
+                    children={moment(evento.e_date).format('DD/MM/YYYY')}
                     onClick={() => {
                       setEventoExibir(evento);
                       setShowModal(true);
