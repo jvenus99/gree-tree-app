@@ -1,10 +1,11 @@
 import axios from 'axios';
 
 const headers = {
-  Authorization: localStorage.getItem('token'),
+  'Content-Type':'application/json',
+  //Authorization: localStorage.getItem('token'),
 };
 
 export const api = axios.create({
-  baseURL: 'http://localhost:8000/',
+  baseURL: 'https://green-tree-app-api.herokuapp.com',
   headers,
 });
