@@ -24,7 +24,12 @@ export const Home = () => {
 
   async function fetchNews() {
     const { data } = await axios.get(
-      'https://newsapi.org/v2/everything?q=sustentabilidade&apiKey=f675699f1756481d8ef67909b805c7c7'
+      `https://api.newscatcherapi.com/v2/search?q=sustainability`,
+      {
+        headers: {
+          'x-api-key': '89s_SyY_8VpO6mW-Aw5sgDA4S1C-gzy85LqfeHCW94o',
+        },
+      }
     );
     setNews(data.articles);
   }
