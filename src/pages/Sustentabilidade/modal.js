@@ -16,12 +16,12 @@ export const ModalNews = ({ article, open, setOpen }) => {
           </ButtonCloseModal>
           <ContentModal>
             <h1>{article.title}</h1>
-            <img src={article.urlToImage} alt='Imagem da notícia' />
-            <p>{article.description}</p>
-            <p>{article.content}</p>
+            <img src={article.media} alt='Imagem da notícia' />
+            <p>{article.excerpt}</p>
+            <p>{article.summary}</p>
             <span>
               Deseja ver a notícia completa, entre{' '}
-              <a href={article.url}>aqui</a>!
+              <a href={article.link}>aqui</a>!
             </span>
           </ContentModal>
         </DialogContent>
