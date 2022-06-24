@@ -26,7 +26,7 @@ export const Sustentabilidade = () => {
     async function fetchNews() {
       setLoading(true);
       const { data } = await axios.get(
-        `https://api.newscatcherapi.com/v2/search?q=sustainability&page=${page}`,
+        `https://api.newscatcherapi.com/v2/search?q=sustainability%20%environment&page=${page}`,
         {
           headers: {
             'x-api-key': '89s_SyY_8VpO6mW-Aw5sgDA4S1C-gzy85LqfeHCW94o',
